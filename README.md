@@ -114,9 +114,14 @@ Pour éviter de créer manuellement un observable, plusieurs méthodes existent 
 
 | Code              | Description                                  | Representation                                           |
 |-------------------|----------------------------------------------|----------------------------------------------------------|
-| `NEVER`           | Observable that "never emit value             | ![NEVER](assets/images/observable-never.png)             |
+| `NEVER`           | Observable that "never emit value            | ![NEVER](assets/images/observable-never.png)             |
 | `EMPTY`           | Observable that complete imediatly           | ![EMPTY](assets/images/observable-empty.png)             |
 | `of('A')`         | Observable that emit a value, then complete  | ![of()](assets/images/observable-of.png)                 |
 | `intervall(1000)` | Observable that emit a value every x seconds | ![interval()](assets/images/observable-interval.png)     |
 | `throwError({})`  | Observable that throw an error               | ![throwError()](assets/images/observable-throwError.png) |
+
 See also http://rxmarbles.com/ for more examples.
+
+## Subscriptions
+
+La méthode `subscribe` retourne une `Subscription` qui permet à l'utilisateur de `unsubscribe()` lorsque celui-ci ne souhaite plus recevoir les updates 
