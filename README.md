@@ -126,10 +126,6 @@ See also http://rxmarbles.com/ for more examples.
 
 La méthode `subscribe` retourne une `Subscription` qui permet à l'utilisateur de `unsubscribe()` lorsque celui-ci ne souhaite plus recevoir les updates 
 
-```typescript
-subscription.unsubscribe()
-```
-
 Un exemple d'utilisation serait pour relacher une ressource qui n'est plus necessaire :
 
 ```typescript
@@ -138,6 +134,16 @@ const subscription = twitterFeed.subscribe(tweet => console.log(tweet));
 // Later
 
 subscription.unsubscribe();
+```
+
+Pour créer un observable avec un mécanisme de teardown (action lors du unsubscribe), il faut utiliser le constructeur d'Observable: 
+
+```typescript
+new Observable(observer => {
+    // ...
+    
+    return () => tearDownLogic();
+});
 ```
 
 ## Operateurs
