@@ -206,7 +206,7 @@ const result$ = source$.pipe(
 
 ### First
 
-The first operator will simply only emit the first value from the source$ observable.
+The `first()` operator will simply only emit the first value from the source$ observable.
 
 ```typescript
 const source$ = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
@@ -220,10 +220,35 @@ const result$ = source$.pipe(
 
 Note: When subscribing to the result$ Observable, the first operator will subscribe the subscription to the source$ Observable, then when the first value is emitted, the operator will emit that value, then unsubcribe to the source$ Observable and complete itself. 
 
+### Tap
+
+The `tap(...)` operator is very useful for debuging. It act transparent for emitted values, error and completion. It just enables using the value inside the pipeline, e.g. for displaying.
+
+```typescript
+const source$ = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
+
+const result$ = source$.pipe(
+    tap(value => console.log('value inside tap', value))
+) 
+
+// result$ will emit 0, 1, 2, 3, ... And the console.log in the tap operator will be called for each value.
+```
+
 ### And many more
 
-There is a lot more operators described [here](http://reactivex.io/documentation/operators.html)  
-And [here](https://rxmarbles.com/) is a good operator list with cool and understandable design
+There is a lot more operators described [on learnrxjs.io](https://www.learnrxjs.io/operators/)  
+[Rx Marbles](https://rxmarbles.com/) is also good operator list visuals for better understanding.
+Some of the most useful operators to check are:
+* To creating observables: [EMPTY](https://www.learnrxjs.io/operators/creation/empty.html), [NEVER](https://www.learnrxjs.io/operators/creation/never.html), [of](https://rxmarbles.com/#of), [from](https://rxmarbles.com/#from), ...
+* To combine observables [concat](https://rxmarbles.com/#concat), [merge](https://rxmarbles.com/#merge), [combineLatest](https://rxmarbles.com/#combineLatest), [withLatestFrom](https://rxmarbles.com/#withLatestFrom), ...
+* To filter observables: [filter](https://rxmarbles.com/#filter), [debounceTime](https://rxmarbles.com/#debounceTime), [distinctUntilChanged](https://rxmarbles.com/#distinctUntilChanged), [take](https://rxmarbles.com/#take), ...
+* To transform: [map](https://rxmarbles.com/#map), [pluck](https://rxmarbles.com/#pluck), [scan](https://rxmarbles.com/#scan), ...
+
+I highly encourage you to go though every operators at least once.
+
+### Exercise time
+
+TODO: create an exercise based on basic operators 
 
 ## High-order Observables
 

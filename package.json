@@ -32,6 +32,7 @@
     "ex6": "nodemon src/ex6.ts",
     "ex7": "nodemon src/ex7.ts",
     "ex8": "nodemon src/ex8.ts",
+    "ex9": "nodemon src/ex9.ts",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },

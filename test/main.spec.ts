@@ -6,6 +6,7 @@ import ex5 from "../src/ex5";
 import ex6 from "../src/ex6";
 import ex7 from "../src/ex7";
 import ex8 from "../src/ex8";
+import ex9 from "../src/ex9";
 
 describe('Example', () => {
     describe('1', () => {
@@ -53,6 +54,12 @@ describe('Example', () => {
     describe('8', () => {
         it('should not crash', () => {
             ex8();
+        });
+    });
+
+    describe('9', () => {
+        it('should not crash', () => {
+            ex9();
         });
     });
 });
