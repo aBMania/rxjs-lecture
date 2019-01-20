@@ -163,7 +163,7 @@ Unsubscriptions are also forwarded.
 
 To use more than one operator, just add it to the `pipe()`.
 
-```
+```typescript
 const source = of('A');
 
 source.pipe(
@@ -194,7 +194,7 @@ const result = source.pipe(
 The `filter(...)` operator will create an observable from a source and select the emitted value from the source it want to emit aswell.
 
 
-```
+```typescript
 const source = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
 
 const result = source.pipe(
@@ -208,7 +208,7 @@ const result = source.pipe(
 
 The first operator will simply only emit the first value from the source observable.
 
-```
+```typescript
 const source = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
 
 const result = source.pipe(
