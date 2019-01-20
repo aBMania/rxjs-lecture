@@ -61,14 +61,14 @@ Ce qui a comme représenation
 Le type `Observable` possède une méthode `subscribe()` qui permet d'écouter les différents évènements se produisant à l'intérieur
 
 ```typescript
-source.subscribe(
+source$.subscribe(
    value => console.log(value),
    err => console.log('error'),
    () => console.log('completed')
 );
 ```
 
-Par exemple, avec cet Observable comme source 
+Par exemple, avec cet Observable comme source$ 
 
 ![Example 4](assets/images/observable-example-4.gif)
 
@@ -126,7 +126,7 @@ See also http://rxmarbles.com/ for more examples.
 
 La méthode `subscribe` retourne une `Subscription` qui permet à l'utilisateur de `unsubscribe()` lorsque celui-ci ne souhaite plus recevoir les updates 
 
-Un des cas d'utilisation serait par exemple pour relacher une ressource qui n'est plus necessaire :
+Un des cas d'utilisation serait par exemple pour relacher une ressource$ qui n'est plus necessaire :
 
 ```typescript
 const subscription = twitterFeed.subscribe(tweet => console.log(tweet)); // Listen to tweet feed
@@ -153,20 +153,20 @@ Pour appliquer un opérateur à un observable afin d'en créer un autre, il faut
 
 Here is an example with the `map` operator :
 ```typescript
-const source = of('A');
+const source$ = of('A');
 
-const result = source.pipe(map(...));
+const result$ = source$.pipe(map(...));
 ```
 
-In most cases (I will come back on that later), when you subscribe to the resulting Observable, the operator forward the subscription to the source Observable.
+In most cases (I will come back on that later), when you subscribe to the resulting Observable, the operator forward the subscription to the source$ Observable.
 Unsubscriptions are also forwarded.
 
 To use more than one operator, just add it to the `pipe()`.
 
 ```typescript
-const source = of('A');
+const source$ = of('A');
 
-source.pipe(
+source$.pipe(
     operator1(),
     operator2(),
     operator3(),
@@ -177,48 +177,48 @@ source.pipe(
 ### Map
 
 The `map(...)` operator is one of the most used.
-Each time the source emit a value, this value is given to the callback function given in parameter and emit the resulting value.
-The error or completeness is forwarded from the source to the resulting observable.
+Each time the source$ emit a value, this value is given to the callback function given in parameter and emit the resulting value.
+The error or completeness is forwarded from the source$ to the resulting observable.
 
 ```typescript
-const source = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
+const source$ = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
 
-const result = source.pipe(
+const result$ = source$.pipe(
     map(x => 10 * x)
 ) 
-// Result will emit 0, then 10, then 20, then 30, ...
+// result$ will emit 0, then 10, then 20, then 30, ...
 ```
 
 ### Filter
 
-The `filter(...)` operator will create an observable from a source and select the emitted value from the source it want to emit aswell.
+The `filter(...)` operator will create an observable from a source$ and select the emitted value from the source$ it want to emit aswell.
 
 
 ```typescript
-const source = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
+const source$ = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
 
-const result = source.pipe(
+const result$ = source$.pipe(
     filter(x => x%2 === 0) // Filter only odd values
 )
 
-// Result will emit 0, 2, 4, ...
+// result$ will emit 0, 2, 4, ...
 ```
 
 ### First
 
-The first operator will simply only emit the first value from the source observable.
+The first operator will simply only emit the first value from the source$ observable.
 
 ```typescript
-const source = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
+const source$ = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
 
-const result = source.pipe(
+const result$ = source$.pipe(
     first()
 ) 
 
-// Result will emit 0, then complete.
+// result$ will emit 0, then complete.
 ```
 
-Note: When subscribing to the result Observable, the first operator will subscribe the subscription to the source Observable, then when the first value is emitted, the operator will emit that value, then unsubcribe to the source Observable and complete itself. 
+Note: When subscribing to the result$ Observable, the first operator will subscribe the subscription to the source$ Observable, then when the first value is emitted, the operator will emit that value, then unsubcribe to the source$ Observable and complete itself. 
 
 ### And many more
 
