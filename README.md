@@ -252,7 +252,7 @@ TODO: create an exercise based on basic operators
 
 ## High-order Observables
 
-
+RxJS enables us to write complex behaviors in a very elegant and succinct way.  
 
 ## Subject
 
