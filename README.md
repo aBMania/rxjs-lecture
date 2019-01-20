@@ -222,7 +222,7 @@ Note: When subscribing to the result$ Observable, the first operator will subscr
 
 ### And many more
 
-There is a lot more operators described [here](http://reactivex.io/documentation/operators.html)
+There is a lot more operators described [here](http://reactivex.io/documentation/operators.html)  
 And [here](https://rxmarbles.com/) is a good operator list with cool and understandable design
 
 ## High-order Observables
