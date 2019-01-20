@@ -126,14 +126,14 @@ See also http://rxmarbles.com/ for more examples.
 
 La méthode `subscribe` retourne une `Subscription` qui permet à l'utilisateur de `unsubscribe()` lorsque celui-ci ne souhaite plus recevoir les updates 
 
-Un exemple d'utilisation serait pour relacher une ressource qui n'est plus necessaire :
+Un des cas d'utilisation serait par exemple pour relacher une ressource qui n'est plus necessaire :
 
 ```typescript
-const subscription = twitterFeed.subscribe(tweet => console.log(tweet));
+const subscription = twitterFeed.subscribe(tweet => console.log(tweet)); // Listen to tweet feed
 
 // Later
 
-subscription.unsubscribe();
+subscription.unsubscribe(); // Stop listening tweets
 ```
 
 Pour créer un observable avec un mécanisme de teardown (action lors du unsubscribe), il faut utiliser le constructeur d'Observable: 
@@ -148,7 +148,86 @@ new Observable(observer => {
 
 ## Operateurs
 
+Il est aussi possible de générer un Observable à partir d'un autre. Pour cela on utilise les opérateurs.
+Pour appliquer un opérateur à un observable afin d'en créer un autre, il faut le passer en paramètre à la méthode `pipe()` fournie par RxJS.
+
+Here is an example with the `map` operator :
+```typescript
+const source = of('A');
+
+const result = source.pipe(map(...));
+```
+
+In most cases (I will come back on that later), when you subscribe to the resulting Observable, the operator forward the subscription to the source Observable.
+Unsubscriptions are also forwarded.
+
+To use more than one operator, just add it to the `pipe()`.
+
+```
+const source = of('A');
+
+source.pipe(
+    operator1(),
+    operator2(),
+    operator3(),
+    ...
+);
+```
+
+### Map
+
+The `map(...)` operator is one of the most used.
+Each time the source emit a value, this value is given to the callback function given in parameter and emit the resulting value.
+The error or completeness is forwarded from the source to the resulting observable.
+
+```typescript
+const source = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
+
+const result = source.pipe(
+    map(x => 10 * x)
+) 
+// Result will emit 0, then 10, then 20, then 30, ...
+```
+
+### Filter
+
+The `filter(...)` operator will create an observable from a source and select the emitted value from the source it want to emit aswell.
+
+
+```
+const source = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
+
+const result = source.pipe(
+    filter(x => x%2 === 0) // Filter only odd values
+)
+
+// Result will emit 0, 2, 4, ...
+```
+
+### First
+
+The first operator will simply only emit the first value from the source observable.
+
+```
+const source = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
+
+const result = source.pipe(
+    first()
+) 
+
+// Result will emit 0, then complete.
+```
+
+Note: When subscribing to the result Observable, the first operator will subscribe the subscription to the source Observable, then when the first value is emitted, the operator will emit that value, then unsubcribe to the source Observable and complete itself. 
+
+### And many more
+
+There is a lot more operators described [here](http://reactivex.io/documentation/operators.html)
+And [here](https://rxmarbles.com/) is a good operator list with cool and understandable design
+
 ## High-order Observables
+
+
 
 ## Subject
 

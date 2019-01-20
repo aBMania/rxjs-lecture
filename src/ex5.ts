@@ -7,7 +7,7 @@ interface FakeRequest {
 function request(onResponse: (response: any) => void): FakeRequest {
     const timeout = setTimeout(
         () => onResponse('response'),
-        1000
+        2000
     );
 
     return {
