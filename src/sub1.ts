@@ -1,6 +1,6 @@
 import { interval } from "rxjs";
 
-export default function ex4() {
+export default function sub1() {
     // Create an observable that emit value every seconds
     const source$ = interval(1000); // 0, 1, 2, 3, ...
 
@@ -20,4 +20,4 @@ export default function ex4() {
     );
 }
 
-ex4();
+sub1();

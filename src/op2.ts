@@ -1,12 +1,12 @@
 import { interval } from "rxjs";
-import { first } from "rxjs/operators";
+import { filter } from "rxjs/operators";
 
-export default function ex8() {
+export default function op2() {
 
     const source$ = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
 
     const result$ = source$.pipe(
-        first() // Take only the first value of source
+        filter(x => x % 2 === 0) // Filter only odd values
     );
 
     result$.subscribe(
@@ -16,4 +16,4 @@ export default function ex8() {
     );
 }
 
-ex8();
+op2();

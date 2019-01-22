@@ -1,65 +1,112 @@
-import ex1 from "../src/ex1";
-import ex2 from "../src/ex2";
-import ex3 from "../src/ex3";
-import ex4 from "../src/ex4";
-import ex5 from "../src/ex5";
-import ex6 from "../src/ex6";
-import ex7 from "../src/ex7";
-import ex8 from "../src/ex8";
-import ex9 from "../src/ex9";
+import rxjs1 from "../src/rxjs1";
+import rxjs2 from "../src/rxjs2";
+import sub5 from "../src/sub5";
+import sub1 from "../src/sub1";
+import sub2 from "../src/sub2";
+import op1 from "../src/op1";
+import op2 from "../src/op2";
+import op3 from "../src/op3";
+import op4 from "../src/op4";
+import obs1 from "../src/obs1";
+import sub3 from "../src/sub3";
+import sub4 from "../src/sub4";
+import high1 from "../src/high1";
+import high2 from "../src/high2";
 
 describe('Example', () => {
-    describe('1', () => {
-        it('should not crash', () => {
-            ex1();
+
+    describe('rxjs', () => {
+        describe('1', () => {
+            it('should not crash', () => {
+                rxjs1();
+            });
+        });
+
+        describe('2', () => {
+            it('should not crash', () => {
+                rxjs2();
+            });
         });
     });
 
-    describe('2', () => {
-        it('should not crash', () => {
-            ex2();
+    describe('obs', () => {
+        describe('1', () => {
+            it('should not crash', () => {
+                obs1();
+            });
         });
     });
 
-    describe('3', () => {
-        it('should not crash', () => {
-            ex3();
+    describe('sub', () => {
+        describe('1', () => {
+            it('should not crash', () => {
+                sub1();
+            });
+        });
+
+        describe('2', () => {
+            it('should not crash', () => {
+                sub2();
+            });
+        });
+
+        describe('3', () => {
+            it('should not crash', () => {
+                sub3();
+            });
+        });
+
+        describe('4', () => {
+            it('should not crash', () => {
+                sub4();
+            });
+        });
+
+        describe('5', () => {
+            it('should not crash', () => {
+                sub5();
+            });
         });
     });
 
-    describe('4', () => {
-        it('should not crash', () => {
-            ex4();
+    describe('op', () => {
+        describe('1', () => {
+            it('should not crash', () => {
+                op1();
+            });
+        });
+
+        describe('2', () => {
+            it('should not crash', () => {
+                op2();
+            });
+        });
+
+        describe('3', () => {
+            it('should not crash', () => {
+                op3();
+            });
+        });
+
+        describe('4', () => {
+            it('should not crash', () => {
+                op4();
+            });
         });
     });
 
-    describe('5', () => {
-        it('should not crash', () => {
-            ex5();
+    describe('high', () => {
+        describe('1', () => {
+            it('should not crash', () => {
+                high1();
+            });
+        });
+
+        describe('2', () => {
+            it('should not crash', () => {
+                high2();
+            });
         });
     });
 
-    describe('6', () => {
-        it('should not crash', () => {
-            ex6();
-        });
-    });
-
-    describe('7', () => {
-        it('should not crash', () => {
-            ex7();
-        });
-    });
-
-    describe('8', () => {
-        it('should not crash', () => {
-            ex8();
-        });
-    });
-
-    describe('9', () => {
-        it('should not crash', () => {
-            ex9();
-        });
-    });
 });

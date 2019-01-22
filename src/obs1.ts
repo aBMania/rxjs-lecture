@@ -1,6 +1,6 @@
 import { Observable } from "rxjs";
 
-export default function ex3() {
+export default function obs1() {
     const source$ = new Observable(observer => {
         observer.next('A');
 
@@ -16,4 +16,4 @@ export default function ex3() {
     );
 }
 
-ex3();
+obs1();

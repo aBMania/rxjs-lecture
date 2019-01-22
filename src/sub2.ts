@@ -15,7 +15,7 @@ function request(onResponse: (response: any) => void): FakeRequest {
     }
 }
 
-export default function ex5() {
+export default function sub2() {
 
     const source$ = new Observable(observer => {
         const myRequest = request(
@@ -37,4 +37,4 @@ export default function ex5() {
     );
 }
 
-ex5();
+sub2();

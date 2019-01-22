@@ -1,12 +1,12 @@
 import { interval } from "rxjs";
-import { filter } from "rxjs/operators";
+import { map } from "rxjs/operators";
 
-export default function ex7() {
+export default function op1() {
 
     const source$ = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
 
     const result$ = source$.pipe(
-        filter(x => x % 2 === 0) // Filter only odd values
+        map(x => 10 * x) // Map x to 10x
     );
 
     result$.subscribe(
@@ -16,4 +16,4 @@ export default function ex7() {
     );
 }
 
-ex7();
+op1();

@@ -7,7 +7,7 @@ function getAnObservableWithError() {
     );
 }
 
-export default function ex2() {
+export default function rxjs2() {
 
     // Ignore myTimer$ declaration for now, just focus on the subscribe call
     const myTimer$ = getAnObservableWithError();
@@ -19,4 +19,4 @@ export default function ex2() {
     );
 }
 
-ex2();
+rxjs2();

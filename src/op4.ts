@@ -1,7 +1,7 @@
 import { interval } from "rxjs";
 import { tap } from "rxjs/operators";
 
-export default function ex9() {
+export default function op4() {
 
     const source$ = interval(1000); // Emit a value every seconds: 0, 1, 2, 3, ...
 
@@ -16,4 +16,4 @@ export default function ex9() {
     );
 }
 
-ex9();
+op4();

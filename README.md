@@ -4,15 +4,14 @@ https://slides.com/mania06/rxjs
 
 ## Sommaire
 
-* Présentation RxJS, contexte, utilité, pourquoi
+* RxJS intro, context
 * Observable
-    * Représentation (marbles)
-    * Définition
+    * Definition
         * Next
         * Error
         * Complete
-    * Ecouter observable
-    * Créer un Observable
+    * Listen to an Observable
+    * Create an Observable
         * new Observable();
         * from
         * of
@@ -22,8 +21,26 @@ https://slides.com/mania06/rxjs
         * EMPTY
 * Subscription
     * Unsubscription with example
-    * Différence hot/cold: https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339
+    * Hot/cold distinction
 * Operators
+    * Map
+    * Filter
+    * First
+    * Tap
+    * Many more
+* High-order Observables
+    * switchMap / mergeMap
+    * concatMap / exhaustMap
+* Subjects
+    * Subject
+    * ReplaySubject
+    * BehaviorSubject
+* Multicasting
+    * share
+    * publish
+* Marble testing
+    * Ascii notation
+    * Testing
 
 ## RxJS: pourquoi?
 RxJS = librairie de reactive programming. Sert à manipuler un flux (= Observable)
@@ -123,6 +140,51 @@ Pour éviter de créer manuellement un observable, plusieurs méthodes existent 
 See also http://rxmarbles.com/ for more examples.
 
 ## Subscriptions
+
+### Hot and cold Observables
+
+Until now, we've created *cold* Observables. Here's the difference between hot and cold Observables.
+
+Cold Observable
+```typescript
+const cold$ = new Observable(observer => {
+  const producer = new Producer();
+  // have observer listen to producer here
+});
+```
+
+Hot Observable
+```typescript
+const producer = new Producer();
+const hot$ = new Observable(observer => {
+  // have observer listen to producer here
+});
+```
+
+The cold Observable create its value producer. And a new producer is created each time you subscribe.  
+The hot Observable share a reference to a producer. It start listening to the producer each time you subscribe.
+
+An example of unwanted behavior would be :
+
+```typescript
+    const user$ = new Observable<User>(observer => {
+        getUserFromServer(user => {
+            observer.next(user);
+            observer.complete();
+        });
+    });
+
+    user$.subscribe(user => console.log('user first name', user.firstName));
+    user$.subscribe(user => console.log('user last name', user.lastName));
+
+    // Subscribing twice will send two request to the server !
+```
+
+To make things better here, we should make the cold Observable `user$` hot using an operator like `share()` (or `shareReplay()`, `publish()`, ...). We will see more of that later.
+
+To read more about the difference between hot and cold Observable, [here is a great article](https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339) on the topic.
+
+### Unsubscribe
 
 La méthode `subscribe` retourne une `Subscription` qui permet à l'utilisateur de `unsubscribe()` lorsque celui-ci ne souhaite plus recevoir les updates 
 
@@ -244,16 +306,32 @@ Some of the most useful operators to check are:
 * To filter observables: [filter](https://rxmarbles.com/#filter), [debounceTime](https://rxmarbles.com/#debounceTime), [distinctUntilChanged](https://rxmarbles.com/#distinctUntilChanged), [take](https://rxmarbles.com/#take), ...
 * To transform: [map](https://rxmarbles.com/#map), [pluck](https://rxmarbles.com/#pluck), [scan](https://rxmarbles.com/#scan), ...
 
-I highly encourage you to go though every operators at least once.
+I highly encourage you to go though every operators (even briefly) at least once.
 
-### Exercise time
+### Practice time
 
-TODO: create an exercise based on basic operators 
+Create the observable corresponding to this representation: 
+![Observable exercice 1](assets/images/observable-exercice1.png)
 
 ## High-order Observables
 
 RxJS enables us to write complex behaviors in a very elegant and succinct way.  
+It is very important to have a good understanding of the topic above before exploring the high-order observables.
+
+### mergeMap operator
+### switchMap operator
+### concatMap and exhaustMap
+
 
 ## Subject
+### Subject
+### ReplaySubject
+### BehaivorSubject
 
 ## Multicasting
+### share operator
+### publish operator
+
+## Marble testing
+### Ascii notation
+### Testing
