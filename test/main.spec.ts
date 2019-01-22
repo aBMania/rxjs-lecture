@@ -12,6 +12,10 @@ import sub3 from "../src/sub3";
 import sub4 from "../src/sub4";
 import high1 from "../src/high1";
 import high2 from "../src/high2";
+import ject1 from "../src/ject1";
+import ject2 from "../src/ject2";
+import ject3 from "../src/ject3";
+import ject4 from "../src/ject4";
 
 describe('Example', () => {
 
@@ -105,6 +109,32 @@ describe('Example', () => {
         describe('2', () => {
             it('should not crash', () => {
                 high2();
+            });
+        });
+    });
+
+    describe('ject', () => {
+        describe('1', () => {
+            it('should not crash', () => {
+                ject1();
+            });
+        });
+
+        describe('2', () => {
+            it('should not crash', () => {
+                ject2();
+            });
+        });
+
+        describe('3', () => {
+            it('should not crash', () => {
+                ject3();
+            });
+        });
+
+        describe('4', () => {
+            it('should not crash', () => {
+                ject4();
             });
         });
     });

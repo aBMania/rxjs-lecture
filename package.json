@@ -38,6 +38,10 @@
     "op4": "nodemon src/op4.ts",
     "high1": "nodemon src/high1.ts",
     "high2": "nodemon src/high2.ts",
+    "ject1": "nodemon src/ject1.ts",
+    "ject2": "nodemon src/ject2.ts",
+    "ject3": "nodemon src/ject3.ts",
+    "ject4": "nodemon src/ject4.ts",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
