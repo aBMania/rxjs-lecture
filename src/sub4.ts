@@ -1,33 +1,31 @@
-import { Observable } from "rxjs";
-import { share } from "rxjs/operators";
+import { ConnectableObservable, interval } from "rxjs";
+import { map, publish, startWith, take } from "rxjs/operators";
 
 export default function sub4() {
-    const coldSource$ = new Observable(observer => {
-        setTimeout(() => observer.next('Bob'), 1000);
-        setTimeout(() => observer.next('Ali'), 3000);
-        setTimeout(() => observer.complete(), 4000);
-    });
+    const hotSource$ = interval(1000).pipe(
+        map(i =>  `C${i+2}`),
+        startWith('C1'),
+        take(5),
+        publish()
+    ) as ConnectableObservable<string>;
 
-    // Trasnform the cold Observable to an hot one
-    const hotSource$ = coldSource$.pipe(
-        share()
-    );
+    hotSource$.connect();
 
-    // Subscribe immediately
+    // Subscriber 1
     hotSource$.subscribe(
         value => console.log('first-subscribe-value', value),
         error => console.log('first-subscribe-error', error),
         () => console.log('first-subscribe-complete')
     );
 
-    // Subscribe after 2s
+    // Subscriber 2
     setTimeout(
         () => hotSource$.subscribe(
             value => console.log('second-subscribe-value', value),
             error => console.log('second-subscribe-error', error),
             () => console.log('second-subscribe-complete')
         ),
-        2000
+        2500
     );
 }
 

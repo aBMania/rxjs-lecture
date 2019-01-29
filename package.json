@@ -43,6 +43,7 @@
     "ject2": "nodemon src/ject2.ts",
     "ject3": "nodemon src/ject3.ts",
     "ject4": "nodemon src/ject4.ts",
+    "test1": "jest --watch src/test1.spec.ts",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },

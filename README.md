@@ -43,7 +43,11 @@ https://slides.com/mania06/rxjs
     * Testing
 
 ## RxJS: pourquoi?
-RxJS = librairie de reactive programming. Sert à manipuler un flux (= Observable)
+
+* Une seule API pour gérer plusieurs types de données asynchrones (user input, server requests, websockets, events, ...)
+* Librairie [populaire](https://github.com/Reactive-Extensions/RxJS)
+* Utilisé dans [Angular 2](https://angular.io/guide/observables) et avec [Redux](https://github.com/redux-observable/redux-observable)
+* En cours de [standartisation](https://github.com/tc39/proposal-observable)
 
 ## Un Observable: c'est quoi?
 ### Elements atomiques
