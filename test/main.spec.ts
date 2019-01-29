@@ -16,6 +16,13 @@ import ject1 from "../src/ject1";
 import ject2 from "../src/ject2";
 import ject3 from "../src/ject3";
 import ject4 from "../src/ject4";
+import hello from "../src/hello";
+
+describe('hello', () => {
+    it('should not crash', () => {
+        hello();
+    });
+});
 
 describe('Example', () => {
 

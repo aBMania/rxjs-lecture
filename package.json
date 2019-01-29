@@ -24,6 +24,7 @@
     "build": "tsc -p tsconfig.release.json",
     "build:watch": "tsc -w -p tsconfig.release.json",
     "lint": "tslint -t stylish --project \"tsconfig.json\"",
+    "hello": "nodemon src/hello.ts",
     "rxjs1": "nodemon src/rxjs1.ts",
     "rxjs2": "nodemon src/rxjs2.ts",
     "obs1": "nodemon src/obs1.ts",
