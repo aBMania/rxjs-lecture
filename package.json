@@ -44,6 +44,9 @@
     "ject3": "nodemon src/ject3.ts",
     "ject4": "nodemon src/ject4.ts",
     "test1": "jest --watch src/test1.spec.ts",
+    "easy": "jest --watch src/exercices/easy.spec.ts",
+    "medium": "jest --watch src/exercices/medium.spec.ts",
+    "hard": "jest --watch src/exercices/hard.spec.ts",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
