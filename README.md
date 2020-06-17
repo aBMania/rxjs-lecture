@@ -41,6 +41,7 @@ https://slides.com/mania06/rxjs
 * Marble testing
     * Ascii notation
     * Testing
+* Ressources
 
 ## RxJS: pourquoi?
 
@@ -339,3 +340,10 @@ It is very important to have a good understanding of the topic above before expl
 ## Marble testing
 ### Ascii notation
 ### Testing
+
+## Ressources
+
+[Operator decision tree](https://rxjs.dev/operator-decision-tree)
+[RxViz - Animated playground for Rx Observables](https://rxviz.com/) (Which i used to create the Observables gif)
+[RxJS Marbles - Visual documentation of operators](https://rxmarbles.com/)
+[Reactive.how - Visual explanation of operators](https://reactive.how/rxjs)
