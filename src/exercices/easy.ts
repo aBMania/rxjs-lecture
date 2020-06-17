@@ -1,4 +1,5 @@
 import { Observable } from "rxjs";
+import {map} from "rxjs/operators";
 
 
 /**
@@ -11,8 +12,7 @@ import { Observable } from "rxjs";
  */
 
 export const easy = (input$: Observable<number>): Observable<string> => {
-    // Compute result$ from input$ and return it
-    const result$ = input$ as unknown as Observable<string>;
-
-    return result$;
+    return input$.pipe(
+        map(int => String.fromCharCode(int + 96))
+    )
 };

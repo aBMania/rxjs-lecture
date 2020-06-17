@@ -1,4 +1,5 @@
-import { NEVER, Observable } from "rxjs";
+import {Observable, throwError} from "rxjs";
+import {concatMap, delay} from "rxjs/operators";
 
 /**
  * Rule :
@@ -36,5 +37,7 @@ import { NEVER, Observable } from "rxjs";
  */
 export const hard = (input1$: Observable<string>, input2$: Observable<number>): Observable<number> => {
     // Compute result$ from input1$ and input2$, then return it
-    return NEVER;
+    return input1$.pipe(
+        concatMap(value => value === 'a' ? input2$.pipe(delay(2)) : throwError('error'))
+    );
 };

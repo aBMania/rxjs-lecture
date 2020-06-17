@@ -1,4 +1,5 @@
-import { Observable } from "rxjs";
+import {EMPTY, Observable} from "rxjs";
+import {catchError, filter} from "rxjs/operators";
 
 /**
  *
@@ -18,7 +19,10 @@ import { Observable } from "rxjs";
  */
 export const medium = (input$: Observable<number>): Observable<number> => {
     // Compute result$ from input$ and return it
-    const result$ = input$ as Observable<number>;
+    const result$ = input$.pipe(
+        filter(val => val%2 !== 0),
+        catchError(() => EMPTY)
+    );
 
     return result$;
 };
